@@ -41,7 +41,83 @@ export function getMonthData(array, year){
     }
 }
 
+export function getTopBottomExtremes(array, limit = 3) {
 
+    const results = [];
+
+    array.forEach(row => {
+
+        Object.entries(row)
+            .slice(1)
+            .forEach(([month, value]) => {
+
+                const numberValue = Number(value);
+
+                if (!isNaN(numberValue)) {
+
+                    results.push({
+                        year: row.Year,
+                        month,
+                        value: numberValue
+                    });
+
+                }
+            });
+
+    });
+
+    results.sort((a, b) => a.value - b.value);
+
+    const bottom = results.slice(0, limit);
+
+    const top = results
+        .slice(-limit)
+        .reverse();
+
+    return [...bottom, ...top];
+}
+
+export function getAverageGrouped(array, interval = 1) {
+
+    const yearly = [];
+
+    // 1. média anual
+    array.forEach(row => {
+
+        const values = Object.values(row).slice(1);
+
+        const avg =
+            values.reduce((a, b) => a + b, 0) / values.length;
+
+        yearly.push({
+            year: row.Year,
+            average: avg
+        });
+    });
+
+    // 2. agrupamento
+    const grouped = [];
+
+    for (let i = 0; i < yearly.length; i += interval) {
+
+        const chunk = yearly.slice(i, i + interval);
+
+        const avg =
+            chunk.reduce((a, b) => a + b.average, 0) / chunk.length;
+
+        const start = chunk[0].year;
+        const end = chunk[chunk.length - 1].year;
+
+        grouped.push({
+            label: interval === 1
+                ? String(start)
+                : `${start}-${end}`,
+            average: avg
+        });
+    }
+
+    return grouped;
+}
 
 
 

@@ -25,14 +25,27 @@
             <canvas id="chartByMonth" class="w-full h-2"></canvas>
             <select id="selectYear"></select>
         </div>
-        <div >
-            
+        <div>
+            <div>
+                <canvas id="chartExtremes"></canvas>
+                    <select id="selectQuantity">
+                    <option value="3">Top 3</option>
+                    <option value="5">Top 5</option>
+                    <option value="10">Top 10</option>
+                </select>
+            </div>
+            <div>
+                <div><p>Maior anomalia: <span id="maxAnomaly"></span></p></div>
+                <div><p>Menor anomalia: <span id="mixAnomaly"></span></p></div>
+            </div>
         </div>
         <div>
             <canvas id="chartAverage"></canvas>
-        </div>
-        <div>
-            <canvas id="chartVariations"></canvas>
+            <select id="selectAverage">
+                <option value="1">1 ano</option>
+                <option value="5">5 anos</option>
+                <option value="10">10 anos</option>
+            </select>
         </div>
     </main>
     <footer>
