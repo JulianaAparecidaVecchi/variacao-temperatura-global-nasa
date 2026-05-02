@@ -1,15 +1,11 @@
-
-
-
-async function loadCSV() {
-    const csv = await fetch('data/GLB.Ts+dSST.csv');
+export async function loadCSV(csvName) {
+    const csv = await fetch(csvName);
     const csvText = await csv.text();
     return csvText;
     
 }
 
-
-function parseCSV(text){
+export function parseCSV(text){
     const row = text.split('\n').filter(row => row.trim() != '');
     return row.slice(1).map(row => {
         const [Year,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec] = row.split(',')
@@ -36,9 +32,23 @@ function parseCSV(text){
     });
 }
 
-async function teste() {
-    const text = await loadCSV();      // carrega o CSV
-    const dados = parseCSV(text);      // transforma
+export function getMonthData(array, year){
+    const row = array.find(row => row.Year == year);
+    const entries = Object.entries(row).filter(e => e[1] != 0);
+    return{
+        labels: entries.map(row => row[0]),
+        values: entries.map(row => row[1])
+    }
+}
+
+
+
+
+
+
+/*async function teste() {
+    const text = await loadCSV();      
+    const dados = parseCSV(text);      
 
     console.log("Texto bruto:");
     console.log(text);
@@ -47,4 +57,4 @@ async function teste() {
     console.log(dados);
 }
 
-teste();
+teste();*/

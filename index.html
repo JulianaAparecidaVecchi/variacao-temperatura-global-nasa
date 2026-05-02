@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variaçao da Temperatura Global NASA</title>
     <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
 </head>
 <body>
@@ -20,10 +21,25 @@
             </p>
             <img src="assets/images/logo-nasa.png" alt="Logo da NASA">
         </div>
+        <div>
+            <canvas id="chartByMonth" class="w-full h-2"></canvas>
+            <select id="selectYear"></select>
+        </div>
+        <div >
+            
+        </div>
+        <div>
+            <canvas id="chartAverage"></canvas>
+        </div>
+        <div>
+            <canvas id="chartVariations"></canvas>
+        </div>
     </main>
     <footer>
         &copy; Juliana Aparecida Vecchi - Todos os direitos reservados.
     </footer>
-    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="js/main.js"></script>
+
 </body>
 </html>
