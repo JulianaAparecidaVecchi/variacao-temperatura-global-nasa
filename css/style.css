@@ -1,0 +1,60 @@
+:root{
+    --blue-nasa: #215EAE;
+    --red-nasa: #F02844;
+}
+
+.header-nasa{
+    background-color: var(--blue-nasa);
+}
+
+.header-band-nasa{
+    background-color: var(--red-nasa);
+}
+
+canvas{
+    background-color: white;
+}
+
+:root {
+    --blue-nasa: #215EAE;
+    --red-nasa: #F02844;
+}
+
+.anomaly-card {
+    color: white;
+    border-radius: 12px;
+    transition: 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.anomaly-blue {
+    background: var(--blue-nasa);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.anomaly-red {
+    background: var(--red-nasa);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.anomaly-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 0 15px rgba(255,255,255,0.2),
+        0 0 25px rgba(0,0,0,0.3);
+}
+
+.footer-nasa{
+    background-color: var(--blue-nasa);
+}
+
+.social-hover i{
+    color: white;
+    transition: 0.3s;
+}
+
+.social-hover:hover i{
+    color: var(--red-nasa);
+    transform: scale(1.25);
+}

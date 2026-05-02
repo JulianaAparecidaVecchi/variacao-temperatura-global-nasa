@@ -5,52 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variaçao da Temperatura Global NASA</title>
     <link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Variação da temperatura global (NASA)<h1>
+
+    <header class="header-nasa py-3 text-white text-center">
+        <h1 class="text-center text-light m-0">Variação da temperatura global (NASA)</h1>
     </header>
-    <main>
-        <div>
-            <p>
-                Os dados apresentados nesta página mostram a evolução da temperatura média global desde 1880, com base em análises da NASA por meio do Goddard Institute for Space Studies (GISS).
-                As informações combinam medições de estações meteorológicas e da superfície dos oceanos, oferecendo uma visão global das mudanças ao longo do tempo. Os valores representam anomalias de temperatura, ou seja, variações em relação à média do período de 1951 a 1980.
-                Os gráficos a seguir permitem visualizar as mudanças e acompanhar a tendência de aquecimento do planeta no período de 1880 a 2019.
-            </p>
-            <img src="assets/images/logo-nasa.png" alt="Logo da NASA">
+
+    <div class="header-band-nasa py-1"></div>
+
+    <main class="bg-dark p-4">
+
+        <div class="row align-items-center g-4">
+
+            <div class="col-12 col-md-8">
+                <p class="text-light mb-0 lh-lg fs-6">
+                    Os dados apresentados nesta página mostram a evolução da temperatura média global desde 1880, com base em análises da NASA por meio do Goddard Institute for Space Studies (GISS).
+                    As informações combinam medições de estações meteorológicas e da superfície dos oceanos, oferecendo uma visão global das mudanças ao longo do tempo. Os valores representam anomalias de temperatura, ou seja, variações em relação à média do período de 1951 a 1980.
+                    Os gráficos a seguir permitem visualizar as mudanças e acompanhar a tendência de aquecimento do planeta no período de 1880 a 2019.
+                </p>
+            </div>
+
+            <div class="col-12 col-md-4 text-center ">
+                <img 
+                    src="assets/images/logo-nasa.png" 
+                    alt="Logo da NASA" 
+                    class="img-fluid rounded"
+                >
+            </div>
+
         </div>
-        <div>
-            <canvas id="chartByMonth" class="w-full h-2"></canvas>
-            <select id="selectYear"></select>
+
+        <div class="d-flex flex-column align-items-center mb-5">
+            <div class="w-100 d-flex justify-content-center">
+                <div class="chart-box w-50 w-md-50">
+                    <canvas id="chartByMonth"></canvas>
+                </div>
+            </div>
+
+            <select id="selectYear" class="form-select w-50 mt-3"></select>
         </div>
-        <div>
-            <div>
+
+        <div class="d-flex flex-column flex-lg-row gap-4 align-items-center justify-content-center mb-5">
+
+            <div class="chart-box w-100 w-lg-50">
                 <canvas id="chartExtremes"></canvas>
-                    <select id="selectQuantity">
+
+                <select id="selectQuantity" class="form-select mt-3">
                     <option value="3">Top 3</option>
                     <option value="5">Top 5</option>
                     <option value="10">Top 10</option>
                 </select>
             </div>
-            <div>
-                <div><p>Maior anomalia: <span id="maxAnomaly"></span></p></div>
-                <div><p>Menor anomalia: <span id="mixAnomaly"></span></p></div>
+
+            <div class="d-flex flex-column gap-3 w-50 w-lg-25">
+
+                <div class="anomaly-card anomaly-blue text-center p-3 rounded">
+                    <p class="mb-2">Maior anomalia</p>
+                    <span id="maxAnomaly"></span>
+                </div>
+
+                <div class="anomaly-card anomaly-red text-center p-3 rounded">
+                    <p class="mb-0">Menor anomalia</p>
+                    <span id="mixAnomaly"></span>
+                </div>
+
             </div>
+
         </div>
-        <div>
-            <canvas id="chartAverage"></canvas>
-            <select id="selectAverage">
+
+        <div class="d-flex flex-column align-items-center">
+            <div class="chart-box w-75 w-md-75">
+                <canvas id="chartAverage"></canvas>
+            </div>
+
+            <select id="selectAverage" class="form-select w-50 mt-3">
                 <option value="1">1 ano</option>
                 <option value="5">5 anos</option>
                 <option value="10">10 anos</option>
             </select>
+
         </div>
+
     </main>
-    <footer>
-        &copy; Juliana Aparecida Vecchi - Todos os direitos reservados.
+
+    <div class="header-band-nasa p-1"></div>
+
+    <footer class="footer-nasa card-footer p-2 d-flex flex-row justify-content-around align-items-center">
+        <p class="text-light fs-6">&copy; Juliana Aparecida Vecchi - Todos os direitos reservados.</p>
+
+        <div class="d-flex gap-3">
+
+            <a class="social-hover" href="https://www.linkedin.com/in/juliana-aparecida-vecchi/">
+                <i class="fa-brands fa-linkedin fa-2x"></i>
+            </a>
+
+            <a class="social-hover" href="https://github.com/JulianaAparecidaVecchi">
+                <i class="fa-brands fa-github fa-2x"></i>
+            </a>
+
+        </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="js/main.js"></script>
 

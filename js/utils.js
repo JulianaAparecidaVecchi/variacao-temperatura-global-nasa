@@ -81,7 +81,7 @@ export function getAverageGrouped(array, interval = 1) {
 
     const yearly = [];
 
-    // 1. média anual
+  
     array.forEach(row => {
 
         const values = Object.values(row).slice(1);
@@ -95,7 +95,7 @@ export function getAverageGrouped(array, interval = 1) {
         });
     });
 
-    // 2. agrupamento
+    
     const grouped = [];
 
     for (let i = 0; i < yearly.length; i += interval) {
@@ -118,19 +118,3 @@ export function getAverageGrouped(array, interval = 1) {
 
     return grouped;
 }
-
-
-
-
-/*async function teste() {
-    const text = await loadCSV();      
-    const dados = parseCSV(text);      
-
-    console.log("Texto bruto:");
-    console.log(text);
-
-    console.log("Dados processados:");
-    console.log(dados);
-}
-
-teste();*/
